@@ -1,11 +1,15 @@
-@import url('https://googleapis.com');
-
 :root {
-  --bg-color: #0a140d;       /* Deep matrix dark green */
-  --primary-color: #00ff66;  /* Glowing phosphor snake green */
-  --accent-color: #ff3366;   /* High-contrast neon red for food */
-  --secondary-color: #00aa44;/* Dimmer green for UI/score text */
-  --border-color: #00ff66;   /* Matching border */
+  --bg-color: #0a140d;
+  --primary-color: #00ff66;
+  --accent-color: #ff3366;  
+  --secondary-color: #00aa44;
+  --border-color: #00ff66;
+}
+
+@font-face {
+    font-family: bounce;
+    src: url(./font/bytebounce/ByteBounce.ttf);
+    font-display: swap;
 }
 
 * {
@@ -15,8 +19,10 @@
 }
 
 html {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 16px;
+    font-family: bounce, monospace;
+    font-size: 3vmin;
+    height: 100vh;
+    width: 100vw;
 }
 
 body {
@@ -24,9 +30,6 @@ body {
     flex-direction: column;
     align-items: center;
     background: var(--bg-color);
-    height: 100vh;
-    width: 100vw;
-    padding-top: 2%;
     overflow: hidden;
 }
 
@@ -38,36 +41,80 @@ body {
     align-items: center;
     color: var(--secondary-color);
     text-align: center;
-    font-size:3rem;
+    font-size:4rem;
+    letter-spacing: 2px;
+    word-spacing: 10px;
+    text-shadow: 0 0 8px rgba(38, 255, 38, 0.3);
 }
 
 .score {
     display: flex;
     flex-direction: row;
     gap: 10px;
-    font-size: 1.5rem;
+    width: 80vmin;
+    font-size: 1.6rem;
     justify-content: space-between;
-    padding: 10px;
+    padding-top: 10px;
     color: var(--secondary-color);
     flex-wrap: wrap;
+    text-shadow: 0 0 8px rgba(38, 255, 38, 0.6);
 }
 
 .game-grid {
     border: 4px solid var(--border-color);
     background: var(--bg-color);
+    justify-self: center;
     display: grid;
     height: 80vmin;
     width: 80vmin;
-    grid-template-columns: repeat(30, 1fr);
-    grid-template-rows: repeat(30, 1fr);
+    grid-template-columns: repeat(29, 1fr);
+    grid-template-rows: repeat(29, 1fr);
+    box-shadow: 0 0 8px rgba(38, 255, 38, 0.3);
 }
 
 .snake {
     background: var(--primary-color);
     border: 1px solid var(--secondary-color);
+    box-shadow: 0 0 8px rgba(38, 255, 38, 0.6);
 }
 
 .apple {
     border: 1px solid #8b0123;
     background: var(--accent-color);
+    box-shadow: 0 0 8px rgba(255, 38, 38, 0.6);
+}
+
+.game-container {
+    position: relative;
+}
+
+.popup {
+    position: absolute;
+    background: var(--secondary-color);
+    z-index: 9999;
+    overflow: hidden;
+    width: 50vmin;
+    height: 20vmin;
+    padding: 30px;
+    top: 50%;
+    left: 50%;
+    gap: 2vmin;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 8px rgba(38, 255, 38, 0.6);
+}
+
+.popup-title {
+    font-size: 2.5rem;
+}
+
+.restart-button {
+    border: none;
+    font: inherit;
+    font-size: 1.5rem;
+    padding: 2px 8px;
+    box-shadow: 0 0 5px white;
 }
